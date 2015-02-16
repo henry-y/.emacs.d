@@ -20,8 +20,23 @@
 (setq company-minimum-prefix-length 1)
 (setq company-idle-delay 0.2)
 (setq company-show-numbers t)
-(setq company-backends '(company-clang company-gtags company-files))
-;; (global-set-key "\t" 'company-complete)
+(setq company-selection-wrap-around t)
+;; (setq company-backends '(company-clang company-gtags company-files))
+;; (eval-after-load 'company
+;;   '(progn
+;;      (define-key company-active-map (kbd "TAB") 'company-select-next)
+;;      (define-key company-active-map [tab] #'company-select-next)))
+
+(defun company-complete-common-or-cycle ()
+  (interactive)
+  (when (company-manual-begin)
+    (if (eq last-command 'company-complete-common-or-cycle)
+        (let ((company-selection-wrap-around t))
+          (call-interactively 'company-select-next))
+      (call-interactively 'company-complete-common))))
+(define-key company-active-map [tab] 'company-complete-common-or-cycle)
+(define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)
+
 (add-hook 'after-init-hook 'global-company-mode)
 
 (require 'company-ycmd)
