@@ -28,6 +28,7 @@
 (require 'setup-helm)
 (require 'setup-convenience)
 (require 'setup-editing)
+(require 'setup-org-publish-html)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
