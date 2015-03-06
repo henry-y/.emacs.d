@@ -1,0 +1,3 @@
+[submodule "3rd/emacs-ycmd"]
+	path = 3rd/emacs-ycmd
+	url = https://github.com/abingham/emacs-ycmd.git

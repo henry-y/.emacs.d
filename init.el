@@ -42,7 +42,9 @@
  '(org-html-head "")
  '(org-html-table-default-attributes
    (quote
-    (:class "table table-bordered table-hover table-condensed"))))
+    (:class "table table-bordered table-hover table-condensed")))
+ '(ycmd-collect-identifiers-from-tags-file t)
+ '(ycmd-tag-files (quote auto)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -50,3 +52,6 @@
  ;; If there is more than one, they won't work right.
  '(bmkp-local-file-without-region ((t (:foreground "color-46"))))
  '(which-func ((t (:foreground "brightred" :weight bold)))))
+
+(add-to-list 'load-path "/root/")
+(require 'rtags)

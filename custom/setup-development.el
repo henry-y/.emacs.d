@@ -12,6 +12,8 @@
 
 (electric-pair-mode t)
 
+(add-to-list 'load-path "~/.emacs.d/3rd/emacs-ycmd")
+
 (require 'ycmd)
 (ycmd-setup)
 (set-variable 'ycmd-server-command '("python" "/root/dev/ycmd/ycmd"))
