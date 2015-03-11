@@ -1,3 +1,6 @@
 [submodule "3rd/emacs-ycmd"]
 	path = 3rd/emacs-ycmd
 	url = https://github.com/abingham/emacs-ycmd.git
+[submodule "3rd/rtags"]
+	path = 3rd/rtags
+	url = https://github.com/Andersbakken/rtags.git
