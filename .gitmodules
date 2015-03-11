@@ -4,3 +4,6 @@
 [submodule "3rd/rtags"]
 	path = 3rd/rtags
 	url = https://github.com/Andersbakken/rtags.git
+[submodule "3rd/ycmd"]
+	path = 3rd/ycmd
+	url = https://github.com/Valloric/ycmd.git
