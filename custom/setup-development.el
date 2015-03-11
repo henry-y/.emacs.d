@@ -16,7 +16,7 @@
 
 (require 'ycmd)
 (ycmd-setup)
-(set-variable 'ycmd-server-command '("python" "/root/dev/ycmd/ycmd"))
+(set-variable 'ycmd-server-command '("python" "~/.emacs.d/3rd/ycmd/ycmd"))
 
 (require 'company)
 (setq company-minimum-prefix-length 1)
@@ -112,6 +112,17 @@
     (let ((win3 (split-window nil (/ (* (window-height) 3) 4)))) ;io
       (gdb-set-window-buffer (gdb-get-buffer-create 'gdb-inferior-io) nil win3))
     (select-window win0)
-        ))           
+    ))
+
+(add-to-list 'load-path "~/.emacs.d/3rd/rtags/src/")
+(require 'rtags)
+
+(global-set-key (kbd "M-.") 'rtags-find-symbol-at-point)
+(global-set-key (kbd "M-]") 'rtags-find-references-at-point)
+(global-set-key (kbd "M-*") 'rtags-location-stack-back)
+(global-set-key (kbd "M-(") 'rtags-location-stack-forward)
+(global-set-key (kbd "<M-up>") 'rtags-previous-match)
+(global-set-key (kbd "<M-down>") 'rtags-next-match)
+(global-set-key (kbd "C-c h i") 'rtags-imenu)
 
 (provide 'setup-development)

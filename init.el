@@ -52,6 +52,3 @@
  ;; If there is more than one, they won't work right.
  '(bmkp-local-file-without-region ((t (:foreground "color-46"))))
  '(which-func ((t (:foreground "brightred" :weight bold)))))
-
-(add-to-list 'load-path "/root/")
-(require 'rtags)
