@@ -16,7 +16,7 @@
 
 (require 'ycmd)
 (ycmd-setup)
-(set-variable 'ycmd-server-command '("python" "~/.emacs.d/3rd/ycmd/ycmd"))
+(set-variable 'ycmd-server-command '("python" "/root/.emacs.d/3rd/ycmd/ycmd"))
 
 (require 'company)
 (setq company-minimum-prefix-length 1)
