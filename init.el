@@ -26,8 +26,8 @@
 
 (add-to-list 'load-path "~/.emacs.d/custom/")
 
-(require 'setup-development)
 (require 'setup-helm)
+(require 'setup-development)
 (require 'setup-convenience)
 (require 'setup-editing)
 (require 'setup-org)
