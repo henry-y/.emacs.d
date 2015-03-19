@@ -1,3 +1,6 @@
+(add-to-list 'load-path "~/.emacs.d/3rd/emacs-async")
+(add-to-list 'load-path "~/.emacs.d/3rd/helm")
+
 (require 'helm-config)
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
 (global-unset-key (kbd "C-x c"))
@@ -27,9 +30,22 @@
 (global-set-key (kbd "C-c h o") 'helm-occur)
 (global-set-key (kbd "C-c <SPC>") 'helm-global-mark-ring)
 
+(add-to-list 'load-path "~/.emacs.d/3rd/helm-gtags")
+
+(require 'helm-gtags)
+
 (add-hook 'c-mode-hook 'helm-gtags-mode)
 (add-hook 'c++-mode-hook 'helm-gtags-mode)
 (add-hook 'asm-mode-hook 'helm-gtags-mode)
+
+(custom-set-variables
+ '(helm-gtags-path-style 'relative)
+ '(helm-gtags-ignore-case t)
+ '(helm-gtags-auto-update t))
+
+(global-set-key (kbd "M-g M-.") 'helm-gtags-find-tag)
+(global-set-key (kbd "M-g M-]") 'helm-gtags-find-rtag)
+(global-set-key (kbd "M-g M-*") 'helm-gtags-pop-stack)
 
 (helm-autoresize-mode 1)
 
