@@ -125,4 +125,10 @@
 (global-set-key (kbd "<M-down>") 'rtags-next-match)
 (global-set-key (kbd "C-c h i") 'rtags-imenu)
 
+(eval-after-load "helm-gtags"
+  '(progn
+     (define-key helm-gtags-mode-map (kbd "M-g .") 'helm-gtags-find-tag)
+     (define-key helm-gtags-mode-map (kbd "M-g ]") 'helm-gtags-find-rtag)
+     (define-key helm-gtags-mode-map (kbd "M-g *") 'helm-gtags-pop-stack)))
+
 (provide 'setup-development)

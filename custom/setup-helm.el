@@ -31,4 +31,6 @@
 (add-hook 'c++-mode-hook 'helm-gtags-mode)
 (add-hook 'asm-mode-hook 'helm-gtags-mode)
 
+(helm-autoresize-mode 1)
+
 (provide 'setup-helm)
