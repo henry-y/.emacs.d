@@ -45,7 +45,8 @@
 
 (global-set-key (kbd "M-g M-.") 'helm-gtags-find-tag)
 (global-set-key (kbd "M-g M-]") 'helm-gtags-find-rtag)
-(global-set-key (kbd "M-g M-*") 'helm-gtags-pop-stack)
+(global-set-key (kbd "M-g M-*") 'helm-gtags-previous-history)
+(global-set-key (kbd "M-g M-(") 'helm-gtags-next-history)
 
 (helm-autoresize-mode 1)
 
