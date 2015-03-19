@@ -19,3 +19,6 @@
 [submodule "3rd/company-mode"]
 	path = 3rd/company-mode
 	url = https://github.com/company-mode/company-mode.git
+[submodule "3rd/flycheck"]
+	path = 3rd/flycheck
+	url = https://github.com/flycheck/flycheck.git

@@ -76,6 +76,8 @@
  '(("\\(\\w+\\)\\s-*\(" 1 'font-lock-function-call-face))
  '(("\\<\\(if\\|while\\)\\s-*\(" 1 'font-lock-keyword-face)))
 
+(add-to-list 'load-path "~/.emacs.d/3rd/flycheck")
+
 (require 'flycheck)
 (setq flycheck-display-errors-function nil)
 (add-hook 'after-init-hook #'global-flycheck-mode)
