@@ -18,6 +18,8 @@
 (ycmd-setup)
 (set-variable 'ycmd-server-command '("python" "/root/.emacs.d/3rd/ycmd/ycmd"))
 
+(add-to-list 'load-path "~/.emacs.d/3rd/company-mode")
+
 (require 'company)
 (setq company-minimum-prefix-length 1)
 (setq company-idle-delay 0.2)
