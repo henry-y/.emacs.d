@@ -51,4 +51,4 @@
  '(bmkp-local-file-without-region ((t (:foreground "color-46"))))
  '(which-func ((t (:foreground "brightred" :weight bold)))))
 
-(setq debug-on-error t)
+;; (setq debug-on-error t)
