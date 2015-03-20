@@ -22,3 +22,9 @@
 [submodule "3rd/flycheck"]
 	path = 3rd/flycheck
 	url = https://github.com/flycheck/flycheck.git
+[submodule "3rd/git-modes"]
+	path = 3rd/git-modes
+	url = https://github.com/magit/git-modes.git
+[submodule "3rd/magit"]
+	path = 3rd/magit
+	url = https://github.com/magit/magit.git
