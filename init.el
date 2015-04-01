@@ -31,6 +31,7 @@
 (add-to-list 'load-path "~/.emacs.d/custom/")
 
 (require 'setup-helm)
+(require 'dcpl-mode)
 (require 'setup-development)
 (require 'setup-convenience)
 (require 'setup-editing)

@@ -37,16 +37,19 @@
 (add-hook 'c-mode-hook 'helm-gtags-mode)
 (add-hook 'c++-mode-hook 'helm-gtags-mode)
 (add-hook 'asm-mode-hook 'helm-gtags-mode)
+;; (add-hook 'dcpl-mode-hook 'helm-gtags-mode)
 
 (custom-set-variables
  '(helm-gtags-path-style 'relative)
  '(helm-gtags-ignore-case t)
  '(helm-gtags-auto-update t))
 
-(global-set-key (kbd "M-g M-.") 'helm-gtags-find-tag)
-(global-set-key (kbd "M-g M-]") 'helm-gtags-find-rtag)
-(global-set-key (kbd "M-g M-*") 'helm-gtags-previous-history)
-(global-set-key (kbd "M-g M-(") 'helm-gtags-next-history)
+(eval-after-load "helm-gtags"
+  '(progn
+     (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-find-tag)
+     (define-key helm-gtags-mode-map (kbd "M-]") 'helm-gtags-find-rtag)
+     (define-key helm-gtags-mode-map (kbd "M-*") 'helm-gtags-previous-history)
+     (define-key helm-gtags-mode-map (kbd "M-(") 'helm-gtags-next-history)))
 
 (helm-autoresize-mode 1)
 
