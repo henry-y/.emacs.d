@@ -66,15 +66,16 @@
 (require 'font-lock)
 
 (defface font-lock-function-call-face
-  '((t (:foreground "#AA5533" :bold t)))
+  '((t (:foreground "#FF0000")))
   "Font Lock mode face used to highlight function calls."
   :group 'font-lock-highlighting-faces)
 (defvar font-lock-function-call-face 'font-lock-function-call-face)
 
-(font-lock-add-keywords
- 'c-mode
- '(("\\(\\w+\\)\\s-*\(" 1 'font-lock-function-call-face))
- '(("\\<\\(if\\|while\\)\\s-*\(" 1 'font-lock-keyword-face)))
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (font-lock-add-keywords nil
+                                    '(("\\(\\w+\\)\\s-*\(" 1 'font-lock-function-call-face))
+                                    '(("\\<\\(if\\|while\\)\\s-*\(" 1 'font-lock-keyword-face)))))
 
 (add-to-list 'load-path "~/.emacs.d/3rd/flycheck")
 
