@@ -14,9 +14,9 @@
 
 (defconst dcpl-font-lock-keywords-1
   '(
-    ("\\<\\(#include\\|include\\)\\>[ \t]*\\(.*\\)"
-     (1 font-lock-preprocessor-face) (2 font-lock-constant-face nil t))
-    ("\\<\\(call\\)\\>[ \t]*\\(.*\\)"
+    ;; ("\\<\\(#?include\\|define\\|undef\\|ifdef\\|elseifdef\\)\\>[ \t]*\\(.*\\)"
+    ;;  (1 font-lock-preprocessor-face) (2 font-lock-constant-face nil t))
+        ("\\<\\(call\\)\\>[ \t]*\\(.*\\)"
      (1 font-lock-keyword-face) (2 font-lock-function-name-face nil t)))
   "Subdued level highlighting for DCPL mode.")
 
@@ -24,36 +24,43 @@
   (append
    dcpl-font-lock-keywords-1
    `(
+     ;; Preprocessor
+     ,(concat "\\<"
+              (regexp-opt '("define" "#define" "undef" "#undef" "ifdef"
+			    "#ifdef" "elseifdef" "ifndef" "#ifndef"
+			    "endifdef" "#else" "#endif" "__LINE__"
+			    "__FILE__") t)
+              "\\>")
      ;; Integer Expressions
      ,(concat "\\<"
-	      (regexp-opt '("or" "and" "bitor" "bitxor" "bitand" "left"
-			    "right" "div" "mod" "not" "bitnot") t)
-	      "\\>")
+   	      (regexp-opt '("or" "and" "bitor" "bitxor" "bitand" "left"
+   			    "right" "div" "mod" "not" "bitnot") t)
+   	      "\\>")
      ;; String Expressions
      ,(concat "\\<"
-	      (regexp-opt '("nullif" "nullthen") t)
-	      "\\>")
+   	      (regexp-opt '("nullif" "nullthen") t)
+   	      "\\>")
      ;; Statements
      ,(concat "\\<"
-	     (regexp-opt '("encode" "locate" "parse" "pattern" "break"
-			   "call" "continue" "exp" "switch" "endswitch"
-			   "case" "endcase" "other" "exit" "for" "endfor"
-			   "if" "else" "endif" "pause" "return" "wait"
-			   "while" "endwhile" "comment" "prompt" "add"
-			   "display" "protocol" "log" "badfcs" "codec"
-			   "on" "off" "forward" "to" "stop" "free"
-			   "gwrite" "append" "timestamp" "keyboard"
-			   "load" "noglobals" "logpolicy" "logsize"
-			   "totalsize" "preprocess" "print" "received"
-			   "remove" "send" "screen" "clear" "sprint"
-			   "store" "sysmon" "timeslot" "unload" "view"
-			   "write" "wsprint" "start_itimer" "stop_itimer"
-			   "tag" "index" "units" "phase" "read_itimer"
-			   "ajust_itimer" "array" "default" "context"
-			   "main" "portspec" "variant" "variable") t)
-	     "\\>")
+   	     (regexp-opt '("encode" "locate" "parse" "pattern" "break"
+   			   "call" "continue" "exp" "switch" "endswitch"
+   			   "case" "endcase" "other" "exit" "for" "endfor"
+   			   "if" "else" "endif" "pause" "return" "wait"
+   			   "while" "endwhile" "comment" "prompt" "add"
+   			   "display" "protocol" "log" "badfcs" "codec"
+   			   "on" "off" "forward" "to" "stop" "free"
+   			   "gwrite" "append" "timestamp" "keyboard"
+   			   "load" "noglobals" "logpolicy" "logsize"
+   			   "totalsize" "preprocess" "print" "received"
+   			   "remove" "send" "screen" "clear" "sprint"
+   			   "store" "sysmon" "timeslot" "unload" "view"
+   			   "write" "wsprint" "start_itimer" "stop_itimer"
+   			   "tag" "index" "units" "phase" "read_itimer"
+   			   "ajust_itimer" "array" "default" "context"
+   			   "main" "portspec" "variant" "variable") t)
+   	     "\\>")
      ("\\(\\w+\\)\\s-*\(" 1 font-lock-function-call-face)
-     ("[&%]\\(\\w+\\)" 1 font-lock-variable-name-face)
+     ("[&%@]\\(\\w+\\)" 1 font-lock-variable-name-face)
      ;; highlight-numbers minor mode override this, fix to do
      ;; ("\\(#[a-fA-F0-9]+\\)" 1 font-lock-hex-integer-face)
      ("#\\([a-fA-F0-9]+\\)" 1 font-lock-constant-face)
