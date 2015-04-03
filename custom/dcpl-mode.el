@@ -29,7 +29,7 @@
               (regexp-opt '("define" "#define" "undef" "#undef" "ifdef"
 			    "#ifdef" "elseifdef" "ifndef" "#ifndef"
 			    "endifdef" "#else" "#endif" "__LINE__"
-			    "__FILE__") t)
+			    "__FILE__" "include" "#include") t)
               "\\>")
      ;; Integer Expressions
      ,(concat "\\<"
