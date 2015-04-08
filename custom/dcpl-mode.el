@@ -16,7 +16,8 @@
   '(
     ;; ("\\<\\(#?include\\|define\\|undef\\|ifdef\\|elseifdef\\)\\>[ \t]*\\(.*\\)"
     ;;  (1 font-lock-preprocessor-face) (2 font-lock-constant-face nil t))
-        ("\\<\\(call\\)\\>[ \t]*\\(.*\\)"
+        ;;("\\`\\s-*\\(call\\)\\s-+\\(\\S-*\\)"
+        ("\\<\\(call\\)\\>[ \t]+\\(.*\\)"
      (1 font-lock-keyword-face) (2 font-lock-function-name-face nil t)))
   "Subdued level highlighting for DCPL mode.")
 
@@ -76,10 +77,10 @@
   (buffer-substring-no-properties (point-at-bol) (point-at-eol)))
 
 (defconst dcpl--include-regexp
-  "\\`\\s-*\\(?:#include\\|include\\)\\s-+\\(.*\\)")
+  "\\`\\s-*\\(?:#include\\|include\\)\\s-+\\(\\S-*\\)")
 
 (defconst dcpl--call-regexp
-  "\\`\\s-*call\\s-+\\(.*\\)")
+  "\\`\\s-*call\\s-+\\(\\S-*\\)")
 
 ;; (defun dcpl-find-definition ()
 ;;   "Find symbol definition."
@@ -101,7 +102,10 @@
 	  (helm-gtags-find-files (concat "/" (match-string-no-properties 1 line))))
       (if (string-match dcpl--call-regexp line)
 	  (let ((helm-gtags-use-input-at-cursor t))
-	    (helm-gtags-find-files (concat "/" (match-string-no-properties 1 line) ".d" )))))))
+	    (helm-gtags-find-files (concat "/" (match-string-no-properties 1 line) "\\.d" )))
+	(helm-gtags-find-tag-from-here)
+	;;(call-interactively 'helm-gtags-find-tag)
+	))))
 
 (defun dcpl-find-references ()
   "Find symbol references."
