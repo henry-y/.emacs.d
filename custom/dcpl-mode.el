@@ -130,7 +130,7 @@
     map)
   "Keymap for DCPL major mode")
 
-(add-to-list 'auto-mode-alist '("\\.\\(d\\|def\\)\\'" . dcpl-mode))
+(add-to-list 'auto-mode-alist '("\\.\\(d\\|def\\|dh\\)\\'" . dcpl-mode))
 
 (defun check_symbol()
   "print current symbol."
