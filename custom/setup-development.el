@@ -12,13 +12,9 @@
 
 (electric-pair-mode t)
 
-(add-to-list 'load-path "~/.emacs.d/3rd/emacs-ycmd")
-
 (require 'ycmd)
 (ycmd-setup)
 (set-variable 'ycmd-server-command '("python" "/root/.emacs.d/3rd/ycmd/ycmd"))
-
-(add-to-list 'load-path "~/.emacs.d/3rd/company-mode")
 
 (require 'company)
 (setq company-minimum-prefix-length 1)
@@ -77,8 +73,6 @@
                                     '(("\\(\\w+\\)\\s-*\(" 1 'font-lock-function-call-face))
                                     '(("\\<\\(if\\|while\\)\\s-*\(" 1 'font-lock-keyword-face)))))
 
-(add-to-list 'load-path "~/.emacs.d/3rd/flycheck")
-
 (require 'flycheck)
 (setq flycheck-display-errors-function nil)
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -119,7 +113,9 @@
     (select-window win0)
     ))
 
-(add-to-list 'load-path "~/.emacs.d/3rd/rtags/src/")
+(setq rtags-src-dir
+      (expand-file-name "3rd/rtags/src" user-emacs-directory))
+(add-to-list 'load-path rtags-src-dir)
 (require 'rtags)
 
 (define-key c-mode-base-map (kbd "M-.") 'rtags-find-symbol-at-point)

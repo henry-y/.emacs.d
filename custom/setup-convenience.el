@@ -37,8 +37,6 @@
 (require 'undo-tree)
 (global-undo-tree-mode)
 
-(add-to-list 'load-path "~/.emacs.d/3rd/git-modes")
-(add-to-list 'load-path "~/.emacs.d/3rd/magit")
 (eval-after-load 'info
   '(progn (info-initialize)
 	  (add-to-list 'Info-directory-list "~/.emacs.d/3rd/magit/")))
@@ -47,5 +45,7 @@
 (global-set-key (kbd "<f5>") 'magit-status)
 (setq magit-auto-revert-mode nil)
 (setq magit-last-seen-setup-instructions "1.4.0")
+
+(require 'multiple-cursors)
 
 (provide 'setup-convenience)

@@ -28,7 +28,15 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
-(add-to-list 'load-path "~/.emacs.d/custom/")
+(setq custom-dir
+      (expand-file-name "custom" user-emacs-directory))
+(add-to-list 'load-path custom-dir)
+
+(setq 3rd-dir
+      (expand-file-name "3rd" user-emacs-directory))
+(dolist (project (directory-files 3rd-dir t "\\w+"))
+  (when (file-directory-p project)
+    (add-to-list 'load-path project)))
 
 (require 'setup-helm)
 (require 'dcpl-mode)

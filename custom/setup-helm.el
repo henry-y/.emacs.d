@@ -1,6 +1,3 @@
-(add-to-list 'load-path "~/.emacs.d/3rd/emacs-async")
-(add-to-list 'load-path "~/.emacs.d/3rd/helm")
-
 (require 'helm-config)
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
 (global-unset-key (kbd "C-x c"))
@@ -29,8 +26,6 @@
 (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
 (global-set-key (kbd "C-c h o") 'helm-occur)
 (global-set-key (kbd "C-c <SPC>") 'helm-global-mark-ring)
-
-(add-to-list 'load-path "~/.emacs.d/3rd/helm-gtags")
 
 (require 'helm-gtags)
 

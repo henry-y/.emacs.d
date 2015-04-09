@@ -28,3 +28,6 @@
 [submodule "3rd/magit"]
 	path = 3rd/magit
 	url = https://github.com/magit/magit.git
+[submodule "3rd/multiple-cursors"]
+	path = 3rd/multiple-cursors
+	url = https://github.com/magnars/multiple-cursors.el.git
