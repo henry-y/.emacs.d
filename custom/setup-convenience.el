@@ -48,4 +48,8 @@
 
 (require 'multiple-cursors)
 
+(require 'saveplace)
+(setq-default save-place t)
+(setq save-place-file (expand-file-name ".savedplaces" user-emacs-directory))
+
 (provide 'setup-convenience)
