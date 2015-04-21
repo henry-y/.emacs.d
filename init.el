@@ -45,6 +45,7 @@
 (require 'setup-editing)
 (require 'setup-org)
 (require 'setup-org-publish-html)
+(require 'setup-mu4e)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

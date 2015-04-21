@@ -31,3 +31,6 @@
 [submodule "3rd/multiple-cursors"]
 	path = 3rd/multiple-cursors
 	url = https://github.com/magnars/multiple-cursors.el.git
+[submodule "3rd/mu"]
+	path = 3rd/mu
+	url = https://github.com/djcb/mu.git
