@@ -26,8 +26,14 @@
 (when (fboundp 'imagemagick-register-types)
   (imagemagick-register-types))
 (setq mu4e-view-prefer-html t)
-(require 'mu4e-contrib)
-(setq mu4e-html2text-command 'mu4e-shr2text)
+;; (require 'mu4e-contrib)
+;; (setq mu4e-html2text-command 'mu4e-shr2text)
+(defun my-render-html-message ()
+  (let ((dom (libxml-parse-html-region (point-min) (point-max))))
+    (erase-buffer)
+    (shr-insert-document dom)
+    (goto-char (point-min))))
+(setq mu4e-html2text-command 'my-render-html-message)
 
 (add-hook 'mu4e-compose-mode-hook
           (defun my-do-compose-stuff ()
