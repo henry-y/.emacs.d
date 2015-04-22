@@ -45,8 +45,10 @@
 (require 'setup-editing)
 (require 'setup-org)
 (require 'setup-org-publish-html)
+(require 'setup-sauron)
 (require 'setup-mu4e)
 (require 'org-import-icalendar)
+(require 'setup-log)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
