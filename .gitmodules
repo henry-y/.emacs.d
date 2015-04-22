@@ -34,3 +34,6 @@
 [submodule "3rd/mu"]
 	path = 3rd/mu
 	url = https://github.com/djcb/mu.git
+[submodule "3rd/sauron"]
+	path = 3rd/sauron
+	url = https://github.com/djcb/sauron.git
