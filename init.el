@@ -46,6 +46,7 @@
 (require 'setup-org)
 (require 'setup-org-publish-html)
 (require 'setup-mu4e)
+(require 'org-import-icalendar)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
