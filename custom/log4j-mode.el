@@ -574,25 +574,49 @@ first line of the declaration."
       (font-lock-fontify-region log4j-last-highlight-pos (point-max)))
     (setq log4j-last-highlight-pos (point-max))))
 
+(defvar log4j-loglevel-prefix
+  ;; "\\([0-9]+ [0-9]+:[0-9]+:[0-9]+\\.[0-9]+\\) ")
+  "\\([0-9]+ [0-9]+:[0-9]+:[0-9]+\\) ")
+
+(defvar log4j-log-fatal-regex
+  (concat log4j-loglevel-prefix "\\(FATAL\\)"))
+
+(defvar log4j-log-error-regex
+  (concat log4j-loglevel-prefix "\\(ERROR\\|err\\|SEVERE\\)"))
+
+(defvar log4j-log-warn-regex
+  (concat log4j-loglevel-prefix "\\(WARN\\|warn\\(?:ING\\)?\\)"))
+
+(defvar log4j-log-info-regex
+  (concat log4j-loglevel-prefix "\\(CONFIG\\|INFO\\|info\\|notice\\)"))
+
+(defvar log4j-log-debug-regex
+  (concat log4j-loglevel-prefix "\\(DEBUG\\|debug\\|FINE\\(?:R\\|ST\\)?\\|STATUS\\)"))
+
 (defun log4j-match-record-fatal (bound)
   "Search forward from point to BOUND for FATAL log record."
-  (log4j-record-search-forward "\\<\\(FATAL\\)\\>" bound))
+  (log4j-record-search-forward log4j-log-fatal-regex bound))
+  ;; (log4j-record-search-forward "\\<\\(FATAL\\)\\>" bound))
 
 (defun log4j-match-record-error (bound)
   "Search forward from point to BOUND for ERROR log record."
-  (log4j-record-search-forward "\\<\\(ERROR\\|SEVERE\\)\\>" bound))
-
+  (log4j-record-search-forward log4j-log-error-regex bound))
+  ;; (log4j-record-search-forward "\\<\\(ERROR\\|err\\|SEVERE\\)\\>" bound))
+  
 (defun log4j-match-record-warn (bound)
   "Search forward from point to BOUND for WARN log record."
-  (log4j-record-search-forward "\\<\\(WARN\\(?:ING\\)?\\)\\>" bound))
+  (log4j-record-search-forward log4j-log-warn-regex bound))
+  ;; (log4j-record-search-forward "\\<\\(WARN\\|warn\\(?:ING\\)?\\)\\>" bound))
 
 (defun log4j-match-record-info (bound)
   "Search forward from point to BOUND for INFO log record."
-  (log4j-record-search-forward "\\<\\(CONFIG\\|INFO\\)\\>" bound))
+  (log4j-record-search-forward log4j-log-info-regex bound))
+  ;; (log4j-record-search-forward "\\<\\(CONFIG\\|INFO\\|info\\|notice\\)\\>" bound))
 
 (defun log4j-match-record-debug (bound)
   "Search forward from point to BOUND for DEBUG level log record."
-  (log4j-record-search-forward "\\<\\(DEBUG\\|FINE\\(?:R\\|ST\\)?\\|STATUS\\)\\>" bound))
+  (log4j-record-search-forward log4j-log-debug-regex bound))
+  ;; (log4j-record-search-forward "\\<\\(DEBUG\\|debug\\|FINE\\(?:R\\|ST\\)?\\|STATUS\\)\\>" bound))
 
 (defvar log4j-font-lock-keywords
   (list '(log4j-match-record-fatal 0 'log4j-font-lock-fatal-face)
@@ -601,6 +625,12 @@ first line of the declaration."
         '(log4j-match-record-info  0 'log4j-font-lock-info-face)
         '(log4j-match-record-debug 0 'log4j-font-lock-debug-face))
   "Describes how to syntax highlight keywords in Log4j mode buffers.")
+
+;; (defconst log4j-font-lock-keywords
+;;   '(
+;;     ("\\([0-9]+ [0-9]+:[0-9]+:[0-9]+\\.[0-9]+\\) \\(notice\\|info\\)"
+;;      (1 font-lock-keyword-face)))
+;;   "Describes how to syntax highlight keywords in Log4j mode buffers.")
 
 ;; ----------------------------------------------------------------------------
 ;; Initialization:
@@ -736,6 +766,13 @@ information on how to customize log record regexps."
 
 ;;;###autoload (add-to-list 'auto-mode-alist '("\\.log\\'" . log4j-mode))
 
+(defvar log4j-mode-syntax-table
+  (let ((log4j-mode-syntax-table (make-syntax-table (standard-syntax-table))))
+    (modify-syntax-entry ?_ "w" log4j-mode-syntax-table)
+    (modify-syntax-entry ?- "w" log4j-mode-syntax-table)
+    log4j-mode-syntax-table)
+  "Syntax table for log4j mode")
+
 ;;;###autoload
 (defun log4j-mode ()
   "Major mode for viewing log files.
@@ -764,6 +801,8 @@ across log records.
 \\{log4j-mode-local-map}"
   (interactive)
   (kill-all-local-variables)
+
+  (set-syntax-table log4j-mode-syntax-table)
 
   ;; Set major mode variables
   (setq major-mode 'log4j-mode)
