@@ -37,3 +37,6 @@
 [submodule "3rd/sauron"]
 	path = 3rd/sauron
 	url = https://github.com/djcb/sauron.git
+[submodule "3rd/sr-speedbar"]
+	path = 3rd/sr-speedbar
+	url = https://github.com/emacsmirror/sr-speedbar.git

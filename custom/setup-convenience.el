@@ -52,4 +52,9 @@
 (setq-default save-place t)
 (setq save-place-file (expand-file-name ".savedplaces" user-emacs-directory))
 
+(require 'sr-speedbar)
+(make-face 'speedbar-face)
+(set-face-font 'speedbar-face "Monaco-10")
+(setq speedbar-mode-hook '(lambda () (buffer-face-set 'speedbar-face)))
+
 (provide 'setup-convenience)
