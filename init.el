@@ -69,3 +69,5 @@
  '(which-func ((t (:foreground "brightred" :weight bold)))))
 
 ;; (setq debug-on-error t)
+
+(add-to-list 'default-frame-alist '(font . "Monaco-11"))
