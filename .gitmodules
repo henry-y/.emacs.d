@@ -49,3 +49,6 @@
 [submodule "3rd/emacs-ctable"]
 	path = 3rd/emacs-ctable
 	url = https://github.com/kiwanami/emacs-ctable.git
+[submodule "3rd/paredit"]
+	path = 3rd/paredit
+	url = http://mumble.net/~campbell/git/paredit.git/

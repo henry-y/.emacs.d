@@ -14,4 +14,7 @@
 
 (setq tab-width 4)
 
+(require 'thing-edit)
+(require 'thing-edit-extension)
+
 (provide 'setup-editing)
