@@ -76,4 +76,4 @@
 
 ;; (setq debug-on-error t)
 
-(add-to-list 'default-frame-alist '(font . "Monaco-11"))
+(add-to-list 'default-frame-alist '(font . "Monaco-10"))
