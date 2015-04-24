@@ -574,9 +574,12 @@ first line of the declaration."
       (font-lock-fontify-region log4j-last-highlight-pos (point-max)))
     (setq log4j-last-highlight-pos (point-max))))
 
-(defvar log4j-loglevel-prefix
+(defcustom log4j-loglevel-prefix
   ;; "\\([0-9]+ [0-9]+:[0-9]+:[0-9]+\\.[0-9]+\\) ")
-  "\\([0-9]+ [0-9]+:[0-9]+:[0-9]+\\) ")
+  "\\([0-9]+ [0-9]+:[0-9]+:[0-9]+\\) "
+  "Customize this for different log format before loglevel keyword."
+  :type 'string
+  :group 'log4j-mode)
 
 (defvar log4j-log-fatal-regex
   (concat log4j-loglevel-prefix "\\(FATAL\\)"))
