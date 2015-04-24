@@ -57,4 +57,6 @@
 (set-face-font 'speedbar-face "Monaco-10")
 (setq speedbar-mode-hook '(lambda () (buffer-face-set 'speedbar-face)))
 
+(require 'fullscreen)
+
 (provide 'setup-convenience)
