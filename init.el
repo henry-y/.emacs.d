@@ -38,6 +38,12 @@
   (when (file-directory-p project)
     (add-to-list 'load-path project)))
 
+(setq no-repo
+      (expand-file-name "3rd/no-repo" user-emacs-directory))
+(dolist (project (directory-files no-repo t "\\w+"))
+  (when (file-directory-p project)
+    (add-to-list 'load-path project)))
+
 (require 'setup-helm)
 (require 'dcpl-mode)
 (require 'setup-development)
@@ -47,8 +53,8 @@
 (require 'setup-org-publish-html)
 (require 'setup-sauron)
 (require 'setup-mu4e)
-(require 'org-import-icalendar)
 (require 'setup-log)
+(require 'setup-tool)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

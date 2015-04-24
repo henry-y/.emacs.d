@@ -40,3 +40,12 @@
 [submodule "3rd/sr-speedbar"]
 	path = 3rd/sr-speedbar
 	url = https://github.com/emacsmirror/sr-speedbar.git
+[submodule "3rd/emacs-epc"]
+	path = 3rd/emacs-epc
+	url = https://github.com/kiwanami/emacs-epc.git
+[submodule "3rd/emacs-deferred"]
+	path = 3rd/emacs-deferred
+	url = https://github.com/kiwanami/emacs-deferred.git
+[submodule "3rd/emacs-ctable"]
+	path = 3rd/emacs-ctable
+	url = https://github.com/kiwanami/emacs-ctable.git
