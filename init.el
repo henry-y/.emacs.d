@@ -48,6 +48,7 @@
 (require 'dcpl-mode)
 (require 'setup-development)
 (require 'setup-convenience)
+(require 'setup-onekey)
 (require 'setup-editing)
 (require 'setup-org)
 (require 'setup-org-publish-html)
