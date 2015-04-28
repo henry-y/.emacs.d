@@ -59,4 +59,6 @@
 
 (require 'fullscreen)
 
+(require 'dired-tar)
+
 (provide 'setup-convenience)

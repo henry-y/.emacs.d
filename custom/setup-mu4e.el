@@ -17,8 +17,8 @@
          ("/Drafts"          . ?d)
 	 ("/Trash"           . ?t)))
 
-(setq mu4e-get-mail-command "offlineimap"
-      mu4e-update-interval 300
+(setq mu4e-get-mail-command "offlineimap -q"
+      mu4e-update-interval 60
       mu4e-headers-auto-update t)
 
 (setq mu4e-split-view 'vertical)
