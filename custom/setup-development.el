@@ -7,7 +7,10 @@
 (defun my-prog-mode-hook()
   (linum-mode t)
   (highlight-numbers-mode t)
-  (highlight-parentheses-mode t))
+  (highlight-parentheses-mode t)
+  (setq tab-width 4)
+  (defvaralias 'c-basic-offset 'tab-width)
+  (defvaralias 'cperl-indent-level 'tab-width))
 (add-hook 'prog-mode-hook 'my-prog-mode-hook)
 
 (electric-pair-mode t)
