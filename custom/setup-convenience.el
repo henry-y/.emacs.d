@@ -61,4 +61,24 @@
 
 (require 'dired-tar)
 
+(defun eshell-here ()
+  "Opens up a new shell in the directory associated with the current buffer's file."
+  (interactive)
+  (let* ((parent (if (buffer-file-name)
+                     (file-name-directory (buffer-file-name))
+                   default-directory))
+         (name (car
+                (last
+                 (split-string parent "/" t)))))
+    (split-window-vertically)
+    (other-window 1)
+    (eshell "new")
+    (rename-buffer (concat "*eshell: " name "*"))
+    (insert (concat "ls"))
+    (eshell-send-input)))
+(global-set-key (kbd "C-!") 'eshell-here)
+
+(defun eshell/x (&rest args)
+  (kill-buffer-and-window))
+
 (provide 'setup-convenience)
