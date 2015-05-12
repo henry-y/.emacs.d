@@ -52,3 +52,6 @@
 [submodule "3rd/paredit"]
 	path = 3rd/paredit
 	url = http://mumble.net/~campbell/git/paredit.git/
+[submodule "3rd/helm-swoop"]
+	path = 3rd/helm-swoop
+	url = https://github.com/ShingoFukuyama/helm-swoop.git

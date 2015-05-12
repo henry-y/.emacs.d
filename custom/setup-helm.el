@@ -24,7 +24,6 @@
 	helm-grep-default-recurse-command "ack-grep -H --no-group --no-color %e %p %f"))
 
 (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
-(global-set-key (kbd "C-c h o") 'helm-occur)
 (global-set-key (kbd "C-c <SPC>") 'helm-global-mark-ring)
 
 (require 'helm-gtags)
@@ -47,5 +46,8 @@
      (define-key helm-gtags-mode-map (kbd "M-(") 'helm-gtags-next-history)))
 
 (helm-autoresize-mode 1)
+
+(require 'helm-swoop)
+(global-set-key (kbd "C-c h o") 'helm-swoop)
 
 (provide 'setup-helm)
