@@ -81,4 +81,7 @@
 (defun eshell/x (&rest args)
   (kill-buffer-and-window))
 
+(require 'desktop)
+(require 'nameses)
+
 (provide 'setup-convenience)
