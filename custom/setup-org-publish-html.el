@@ -4,7 +4,8 @@
 (setq org-html-table-default-attributes '(:class "table table-bordered table-hover table-condensed"))
 (setq org-export-with-toc nil)
 (setq org-publish-use-timestamps-flag nil)
-;(setq org-html-htmlize-output-type 'css)
+;; (setq org-html-htmlize-output-type 'css)
+(setq org-export-with-sub-superscripts nil)
 
 (setq org-publish-project-alist
       '(
