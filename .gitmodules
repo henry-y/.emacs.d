@@ -61,3 +61,6 @@
 [submodule "3rd/Pymacs"]
 	path = 3rd/Pymacs
 	url = https://github.com/pinard/Pymacs.git
+[submodule "3rd/ropemacs"]
+	path = 3rd/ropemacs
+	url = https://github.com/python-rope/ropemacs.git
