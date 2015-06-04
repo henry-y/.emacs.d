@@ -55,3 +55,6 @@
 [submodule "3rd/helm-swoop"]
 	path = 3rd/helm-swoop
 	url = https://github.com/ShingoFukuyama/helm-swoop.git
+[submodule "3rd/rope"]
+	path = 3rd/rope
+	url = https://github.com/python-rope/rope.git
