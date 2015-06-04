@@ -4,10 +4,15 @@
 (global-set-key [(meta f3)] 'highlight-symbol-prev)
 (global-set-key [(control meta f3)] 'highlight-symbol-query-replace)
 
+(require 'highlight-indentation)
+(set-face-background 'highlight-indentation-face "#e3e3d3")
+(set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
+
 (defun my-prog-mode-hook()
   (linum-mode t)
   (highlight-numbers-mode t)
   (highlight-parentheses-mode t)
+  (highlight-indentation-mode t)
   (setq tab-width 4)
   (defvaralias 'c-basic-offset 'tab-width)
   (defvaralias 'cperl-indent-level 'tab-width))
