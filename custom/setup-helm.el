@@ -19,9 +19,13 @@
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-x b") 'helm-mini)
-(when (executable-find "ack-grep")
-  (setq helm-grep-default-command "ack-grep -nH --no-group --no-color %e %p %f"
-	helm-grep-default-recurse-command "ack-grep -H --no-group --no-color %e %p %f"))
+;; (when (executable-find "ack-grep")
+;;   (setq helm-grep-default-command "ack-grep -nH --no-group --no-color %e %p %f"
+;; 	helm-grep-default-recurse-command "ack-grep -H --no-group --no-color %e %p %f"))
+(setq helm-grep-default-command
+	  "grep --color=always -d skip %e -n%cH -e %p %f"
+	  helm-grep-default-recurse-command
+	  "grep --color=always -d recurse %e -n%cH -e %p %f")
 
 (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
 (global-set-key (kbd "C-c <SPC>") 'helm-global-mark-ring)
