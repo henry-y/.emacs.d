@@ -47,6 +47,7 @@
 (require 'setup-helm)
 (require 'dcpl-mode)
 (require 'setup-development)
+(require 'setup-python)
 (require 'setup-convenience)
 (require 'setup-onekey)
 (require 'setup-editing)
