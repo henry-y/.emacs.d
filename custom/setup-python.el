@@ -9,6 +9,9 @@
 ;; (setq py-switch-buffers-on-execute-p t)
 ;; (setq py-smart-indentation t)
 
+(require 'elpy)
+(elpy-enable)
+
 (autoload 'pymacs-apply "pymacs")
 (autoload 'pymacs-call "pymacs")
 (autoload 'pymacs-eval "pymacs" nil t)
@@ -17,8 +20,7 @@
 (autoload 'pymacs-autoload "pymacs")
 (require 'pymacs)
 (pymacs-load "ropemacs" "rope-")
-
-(require 'elpy)
-(elpy-enable)
+(define-key ropemacs-local-keymap (kbd "M-.") 'rope-goto-definition)
+(define-key ropemacs-local-keymap (kbd "M-*") 'rope-pop-mark)
 
 (provide 'setup-python)
