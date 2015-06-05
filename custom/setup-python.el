@@ -18,4 +18,7 @@
 (require 'pymacs)
 (pymacs-load "ropemacs" "rope-")
 
+(require 'elpy)
+(elpy-enable)
+
 (provide 'setup-python)
