@@ -67,3 +67,12 @@
 [submodule "3rd/highlight-indentation"]
 	path = 3rd/highlight-indentation
 	url = https://github.com/antonj/Highlight-Indentation-for-Emacs.git
+[submodule "3rd/elpy"]
+	path = 3rd/elpy
+	url = https://github.com/jorgenschaefer/elpy.git
+[submodule "3rd/pyvenv"]
+	path = 3rd/pyvenv
+	url = https://github.com/jorgenschaefer/pyvenv.git
+[submodule "3rd/yasnippet"]
+	path = 3rd/yasnippet
+	url = https://github.com/capitaomorte/yasnippet.git
