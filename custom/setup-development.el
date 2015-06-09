@@ -134,4 +134,22 @@
 (define-key c-mode-base-map (kbd "<M-down>") 'rtags-next-match)
 (define-key c-mode-base-map (kbd "C-c h i") 'rtags-imenu)
 
+(require 'hideshow)
+(require 'sgml-mode)
+(require 'nxml-mode)
+(add-to-list 'hs-special-modes-alist
+             '(nxml-mode
+               "<!--\\|<[^/>]*[^/]>"
+               "-->\\|</[^/>]*[^/]>"
+
+               "<!--"
+               sgml-skip-tag-forward
+               nil))
+(defun my-nxml-mode-hook()
+  (setq-default indent-tabs-mode nil)
+  (setq nxml-child-indent 4)
+  (setq nxml-slash-auto-complete-flag t)
+  (hs-minor-mode))
+(add-hook 'nxml-mode-hook 'my-nxml-mode-hook)
+
 (provide 'setup-development)
