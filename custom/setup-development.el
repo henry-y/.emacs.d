@@ -63,6 +63,8 @@
 (setq c-default-style "linux"
       c-basic-offset 4)
 
+(c-set-offset 'inline-open '0)
+
 (defun my-c-mode-hook()
   (setq-default indent-tabs-mode nil))
 (add-hook 'c-mode-common-hook 'my-c-mode-hook)
