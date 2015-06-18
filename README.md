@@ -8,24 +8,24 @@ Recent Emacs is needed, at least Emacs-24.4. Installation steps of Emacs 24.4 ca
 
 ## Getting Started
 
-	1. **Make sure there's no Emacs init file by removing ~/.emacs, ~/.emacs.el and ~/.emacs.d**
+1. **Make sure there's no Emacs init file by removing ~/.emacs, ~/.emacs.el and ~/.emacs.d**
 
-	2. Clone the repository to ~/.emacs.d
+2. Clone the repository to ~/.emacs.d
 
-	3. Fetch all submodules:
+3. Fetch all submodules:
 
 	`# git submodule update --init --recursive`
 
 	(_this may take some time depending on download speed._)
 
-	4. Make helm:
+4. Make helm:
 
 	```sh
 	# cd 3rd/helm
 	# make
 	```
-		
-	5. Make Pymacs:
+	
+5. Make Pymacs:
 		
 	```sh
 	# cd 3rd/Pymacs
@@ -33,13 +33,13 @@ Recent Emacs is needed, at least Emacs-24.4. Installation steps of Emacs 24.4 ca
 	# python setup.py install
 	```
 	
-	6. Make ropemacs:
+6. Make ropemacs:
 	
 	```sh
 	# cd 3rd/ropemacs
 	# python setup.py install
 	```
 	
-	7. Follow the instructions at [my blog:Emacs for Email](http://henry-y.github.io/2015/04/emacs-for-email/) to configure `mu4e`
+7. Follow the instructions at [my blog:Emacs for Email](http://henry-y.github.io/2015/04/emacs-for-email/) to configure `mu4e`
 	
 	(_if you don't want to use email with Emacs, skip this step and comment out `(require 'setup-mu4e)` in ~/.emacs.d/init.el_)
