@@ -6,10 +6,16 @@ This is my emacs configuration. It keeps updating, so drop by while you're free.
 
 Recent Emacs is needed, at least Emacs-24.4. Installation steps of Emacs 24.4 can be found at [my blog:Emacs Tutorial](http://henry-y.github.io/2015/01/emacs-tutorial/)
 
-Dependences:
+Install the required packages:
 
-* python-pip
-* cmake-3.2.2
+* `apt-get install python-pip`
+* `pip install rope`
+* `pip install jedi`
+* `pip install flake8`
+* `pip install importmagic`
+* `cmake-3.2.2`
+* `gcc-4.9`
+* `clang`
 
 ## Getting Started
 
@@ -61,5 +67,5 @@ Dependences:
 	Change `ycmd-server-command` in `custom/setup-development.el` to match your home directory:
 
 	```elisp
-	(set-variable 'ycmd-server-command '("python" "/root/.emacs.d/3rd/ycmd/ycmd"))
+	(set-variable 'ycmd-server-command '("python" "/path/to/your/home/.emacs.d/3rd/ycmd/ycmd"))
 	```
