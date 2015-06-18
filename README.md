@@ -20,14 +20,14 @@ Recent Emacs is needed, at least Emacs-24.4. Installation steps of Emacs 24.4 ca
 
 4. Make helm:
 
-	```sh
+	```
 	# cd 3rd/helm
 	# make
 	```
 	
 5. Make Pymacs:
 		
-	```sh
+	```
 	# cd 3rd/Pymacs
 	# make
 	# python setup.py install
@@ -35,7 +35,7 @@ Recent Emacs is needed, at least Emacs-24.4. Installation steps of Emacs 24.4 ca
 	
 6. Make ropemacs:
 	
-	```sh
+	```
 	# cd 3rd/ropemacs
 	# python setup.py install
 	```
