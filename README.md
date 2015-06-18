@@ -14,7 +14,9 @@ Recent Emacs is needed, at least Emacs-24.4. Installation steps of Emacs 24.4 ca
 
 3. Fetch all submodules:
 
-	`# git submodule update --init --recursive`
+	```
+	# git submodule update --init --recursive
+	```
 
 	(_this may take some time depending on download speed._)
 
