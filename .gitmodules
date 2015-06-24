@@ -76,3 +76,6 @@
 [submodule "3rd/yasnippet"]
 	path = 3rd/yasnippet
 	url = https://github.com/capitaomorte/yasnippet.git
+[submodule "3rd/ztree"]
+	path = 3rd/ztree
+	url = https://github.com/fourier/ztree.git

@@ -84,4 +84,6 @@
 (require 'desktop)
 (require 'nameses)
 
+(require 'ztree)
+
 (provide 'setup-convenience)
