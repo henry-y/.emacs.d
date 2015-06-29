@@ -66,7 +66,8 @@
  '(custom-enabled-themes (quote (leuven)))
  '(helm-gtags-auto-update t)
  '(helm-gtags-ignore-case t)
- '(helm-gtags-path-style (quote relative)))
+ '(helm-gtags-path-style (quote relative))
+ '(truncate-lines t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
