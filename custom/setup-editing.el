@@ -9,10 +9,10 @@
 	  hscroll-step 1
 	  hscroll-margin 5)
 
-(global-set-key (kbd "C-<") '(lambda ()
+(global-set-key (kbd "C->") '(lambda ()
 								(interactive)
 								(scroll-left 4)))
-(global-set-key (kbd "C->") '(lambda ()
+(global-set-key (kbd "C-<") '(lambda ()
 								(interactive)
 								(scroll-right 4)))
 
