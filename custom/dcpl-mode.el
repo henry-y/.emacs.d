@@ -18,7 +18,7 @@
     ;;  (1 font-lock-preprocessor-face) (2 font-lock-constant-face nil t))
         ;;("\\`\\s-*\\(call\\)\\s-+\\(\\S-*\\)"
         ("\\<\\(call\\)\\>[ \t]+\\(.*\\)"
-		 (1 font-lock-keyword-face) (2 font-lock-function-name-face nil t)))
+     (1 font-lock-keyword-face) (2 font-lock-function-name-face nil t)))
   "Subdued level highlighting for DCPL mode.")
 
 (defconst dcpl-font-lock-keywords-2
@@ -88,14 +88,21 @@
   (beginning-of-line)
   (if (bobp)
       (indent-line-to 0)
-    (let ((not-indented t) cur-indent)
+    (let ((not-indented t)
+		  (searching-begin-block t)
+		  (block-ends-map '(("endif" . "if") ("endcase" . "case") ("endswitch" . "switch") ("endwhile" . "while") ("endfor" . "for")))
+		  cur-indent)
       (if (looking-at "^[ \t]*\\(endif\\|else\\|endcase\\|endswitch\\|endwhile\\|endfor\\)") ; current line is end block
           (progn
             (save-excursion
-              (forward-line -1)
-              (setq cur-indent (- (current-indentation) tab-width))) ; then dedent current
-            (if (< cur-indent 0)
-                (setq cur-indent 0)))
+			  (while searching-begin-block
+				(forward-line -1)
+				(if (looking-at (concat "^[ \t]*\\(" (cdr (assoc (match-string-no-properties 1) block-ends-map)) "\\).*")) ; found the matching begin block
+					(progn
+					  (setq searching-begin-block nil)
+					  (setq cur-indent (current-indentation)))) ; then dedent current line
+				(if (bobp)
+					(setq searching-begin-block nil))))) ; matching begin block is not found
         (save-excursion
           (while not-indented
             (forward-line -1) ; look previous line
@@ -103,7 +110,7 @@
                 (progn
                   (setq cur-indent (current-indentation)) ; then same indent as previous line
                   (setq not-indented nil))
-              (if (or (looking-at "^[ \t]*\\(if\\|else\\|case\\|\\(exp \\)?switch\\|while\\|for\\)") (looking-at ".*\\s-+case\\s-+.*")) ; previous line is begin block, there might be some {port} before case
+              (if (or (looking-at "^[ \t]*\\(if\\|else\\|case\\|\\(exp \\)?switch\\|while\\|for\\).*") (looking-at ".*\\s-+case\\s-+.*")) ; previous line is begin block, there might be some {port} before case
                   (progn
                     (setq cur-indent (+ (current-indentation) tab-width)) ; then indent relative to previous line
                     (setq not-indented nil))
