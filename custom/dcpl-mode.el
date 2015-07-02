@@ -18,7 +18,7 @@
     ;;  (1 font-lock-preprocessor-face) (2 font-lock-constant-face nil t))
         ;;("\\`\\s-*\\(call\\)\\s-+\\(\\S-*\\)"
         ("\\<\\(call\\)\\>[ \t]+\\(.*\\)"
-     (1 font-lock-keyword-face) (2 font-lock-function-name-face nil t)))
+		 (1 font-lock-keyword-face) (2 font-lock-function-name-face nil t)))
   "Subdued level highlighting for DCPL mode.")
 
 (defconst dcpl-font-lock-keywords-2
@@ -82,6 +82,37 @@
 (defconst dcpl--call-regexp
   "\\`\\s-*call\\s-+\\(\\S-*\\)")
 
+(defun dcpl-indent-line ()
+  "Indent current line as DCPL code"
+  (interactive)
+  (beginning-of-line)
+  (if (bobp)
+      (indent-line-to 0)
+    (let ((not-indented t) cur-indent)
+      (if (looking-at "^[ \t]*\\(endif\\|else\\|endcase\\|endswitch\\|endwhile\\|endfor\\)") ; current line is end block
+          (progn
+            (save-excursion
+              (forward-line -1)
+              (setq cur-indent (- (current-indentation) tab-width))) ; then dedent current
+            (if (< cur-indent 0)
+                (setq cur-indent 0)))
+        (save-excursion
+          (while not-indented
+            (forward-line -1) ; look previous line
+            (if (looking-at "^[ \t]*\\(endif\\|endcase\\|endswitch\\|endwhile\\|endfor\\)") ; previous line is end block
+                (progn
+                  (setq cur-indent (current-indentation)) ; then same indent as previous line
+                  (setq not-indented nil))
+              (if (or (looking-at "^[ \t]*\\(if\\|else\\|case\\|\\(exp \\)?switch\\|while\\|for\\)") (looking-at ".*\\s-+case\\s-+.*")) ; previous line is begin block, there might be some {port} before case
+                  (progn
+                    (setq cur-indent (+ (current-indentation) tab-width)) ; then indent relative to previous line
+                    (setq not-indented nil))
+                (if (bobp)
+                    (setq not-indented nil)))))))
+      (if cur-indent
+          (indent-line-to cur-indent)
+        (indent-line-to 0)))))
+
 ;; (defun dcpl-find-definition ()
 ;;   "Find symbol definition."
 ;;   (interactive)
@@ -142,22 +173,30 @@
   (message "%s" (thing-at-point 'symbol)))
 
 (defvar dcpl-mode-syntax-table
-  (let ((dcpl-mode-syntax-table (make-syntax-table (standard-syntax-table))))
+  ;; (let ((dcpl-mode-syntax-table (make-syntax-table (standard-syntax-table))))
+	(let ((dcpl-mode-syntax-table (make-syntax-table)))
     (modify-syntax-entry ?& "/" dcpl-mode-syntax-table)
     (modify-syntax-entry ?% "/" dcpl-mode-syntax-table)
     (modify-syntax-entry ?= "." dcpl-mode-syntax-table)
     (modify-syntax-entry ?_ "w" dcpl-mode-syntax-table)
+	(modify-syntax-entry ?/ ". 124b" dcpl-mode-syntax-table)
+	(modify-syntax-entry ?* ". 23" dcpl-mode-syntax-table)
+	(modify-syntax-entry ?\n "> b" dcpl-mode-syntax-table)
+	(modify-syntax-entry ?\' "\"'" dcpl-mode-syntax-table)
+	(modify-syntax-entry ?\" "\"\"" dcpl-mode-syntax-table)
     dcpl-mode-syntax-table)
   "Syntax table for dcpl-mode")
 
-(define-derived-mode dcpl-mode c-mode
+(define-derived-mode dcpl-mode prog-mode
 ;; (defun dcpl-mode ()
   "Major mode for editing Digital Communications Programming Language (DCPL)"
-;;  (interactive)
-;;  (kill-all-local-variables)
+  (interactive)
+  ;; (kill-all-local-variables)
   (use-local-map dcpl-mode-map)
   (set-syntax-table dcpl-mode-syntax-table)
-  (setq font-lock-defaults '(dcpl-font-lock-keywords))
+  (set (make-local-variable 'font-lock-defaults) '(dcpl-font-lock-keywords))
+  (set (make-local-variable 'indent-line-function) 'dcpl-indent-line)
+  ;; (set 'indent-line-function 'dcpl-indent-line)
   (setq major-mode 'dcpl-mode)
   (setq mode-name "DCPL")
   (run-hooks 'dcpl-mode-hook))
