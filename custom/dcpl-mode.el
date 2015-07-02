@@ -88,21 +88,16 @@
   (beginning-of-line)
   (if (bobp)
       (indent-line-to 0)
-    (let ((not-indented t)
-		  (searching-begin-block t)
-		  (block-ends-map '(("endif" . "if") ("endcase" . "case") ("endswitch" . "switch") ("endwhile" . "while") ("endfor" . "for")))
-		  cur-indent)
+    (let ((not-indented t) cur-indent)
       (if (looking-at "^[ \t]*\\(endif\\|else\\|endcase\\|endswitch\\|endwhile\\|endfor\\)") ; current line is end block
           (progn
             (save-excursion
-			  (while searching-begin-block
-				(forward-line -1)
-				(if (looking-at (concat "^[ \t]*\\(" (cdr (assoc (match-string-no-properties 1) block-ends-map)) "\\).*")) ; found the matching begin block
-					(progn
-					  (setq searching-begin-block nil)
-					  (setq cur-indent (current-indentation)))) ; then dedent current line
-				(if (bobp)
-					(setq searching-begin-block nil))))) ; matching begin block is not found
+			  (forward-line -1)
+			  (while (looking-at "^\\s-*$")
+				(forward-line -1))
+			  (setq cur-indent (- (current-indentation) tab-width))) ; then dedent current line
+			(if (< cur-indent 0)
+				(setq cur-indent 0)))
         (save-excursion
           (while not-indented
             (forward-line -1) ; look previous line
