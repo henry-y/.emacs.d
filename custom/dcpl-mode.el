@@ -201,6 +201,7 @@
   "Major mode for editing Digital Communications Programming Language (DCPL)"
   (interactive)
   ;; (kill-all-local-variables)
+  (setq case-fold-search nil)
   (use-local-map dcpl-mode-map)
   (set-syntax-table dcpl-mode-syntax-table)
   (set (make-local-variable 'font-lock-defaults) '(dcpl-font-lock-keywords))
