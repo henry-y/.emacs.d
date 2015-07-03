@@ -88,24 +88,31 @@
   (beginning-of-line)
   (if (bobp)
       (indent-line-to 0)
-    (let ((not-indented t) cur-indent)
-      (if (looking-at "^[ \t]*\\(endif\\|else\\|endcase\\|endswitch\\|endwhile\\|endfor\\)") ; current line is end block
+    (let ((not-indented t)
+		  (current-end-regex "^[ \t]*\\(endif\\|else\\|endcase\\|endswitch\\|endwhile\\|endfor\\)")
+		  (previous-end-regex "^[ \t]*\\(endif\\|endcase\\|endswitch\\|endwhile\\|endfor\\)")
+		  (begin-regex "^[ \t]*\\(if\\|else\\|case\\|\\(exp \\)?switch\\|while\\|for\\).*")
+		  (special-case-regex ".*\\s-+case\\s-+.*")
+		  cur-indent)
+      (if (looking-at current-end-regex) ; current line is end block
           (progn
             (save-excursion
 			  (forward-line -1)
 			  (while (looking-at "^\\s-*$")
 				(forward-line -1))
-			  (setq cur-indent (- (current-indentation) tab-width))) ; then dedent current line
+			  (if ( or (looking-at begin-regex) (looking-at special-case-regex))
+				  (setq cur-indent (current-indentation)) ; if previous line is begin block, we won't dedent //TODO better handling
+				(setq cur-indent (- (current-indentation) tab-width)))) ; else dedent current line
 			(if (< cur-indent 0)
 				(setq cur-indent 0)))
         (save-excursion
           (while not-indented
             (forward-line -1) ; look previous line
-            (if (looking-at "^[ \t]*\\(endif\\|endcase\\|endswitch\\|endwhile\\|endfor\\)") ; previous line is end block
+            (if (looking-at previous-end-regex) ; previous line is end block
                 (progn
                   (setq cur-indent (current-indentation)) ; then same indent as previous line
                   (setq not-indented nil))
-              (if (or (looking-at "^[ \t]*\\(if\\|else\\|case\\|\\(exp \\)?switch\\|while\\|for\\).*") (looking-at ".*\\s-+case\\s-+.*")) ; previous line is begin block, there might be some {port} before case
+              (if (or (looking-at begin-regex) (looking-at special-case-regex)) ; previous line is begin block, there might be some {port} before case
                   (progn
                     (setq cur-indent (+ (current-indentation) tab-width)) ; then indent relative to previous line
                     (setq not-indented nil))
