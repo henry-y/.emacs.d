@@ -79,3 +79,6 @@
 [submodule "3rd/ztree"]
 	path = 3rd/ztree
 	url = https://github.com/fourier/ztree.git
+[submodule "3rd/projectile"]
+	path = 3rd/projectile
+	url = https://github.com/bbatsov/projectile.git

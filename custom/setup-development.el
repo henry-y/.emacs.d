@@ -154,4 +154,9 @@
   (hs-minor-mode))
 (add-hook 'nxml-mode-hook 'my-nxml-mode-hook)
 
+(require 'projectile)
+(projectile-global-mode)
+(require 'helm-projectile)
+(helm-projectile-on)
+
 (provide 'setup-development)
