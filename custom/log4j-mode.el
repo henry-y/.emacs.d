@@ -575,8 +575,8 @@ first line of the declaration."
     (setq log4j-last-highlight-pos (point-max))))
 
 (defcustom log4j-loglevel-prefix
-  ;; "\\([0-9]+ [0-9]+:[0-9]+:[0-9]+\\.[0-9]+\\) ")
-  "\\([0-9]+ [0-9]+:[0-9]+:[0-9]+\\) "
+  "\\([0-9]+ [0-9]+:[0-9]+:[0-9]+\\.[0-9]+\\) "
+  ;; "\\([0-9]+ [0-9]+:[0-9]+:[0-9]+\\) "
   "Customize this for different log format before loglevel keyword."
   :type 'string
   :group 'log4j-mode)
