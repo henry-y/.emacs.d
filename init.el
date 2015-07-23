@@ -53,6 +53,7 @@
 (require 'setup-editing)
 (require 'setup-org)
 (require 'setup-org-publish-html)
+(require 'setup-twiki)
 (require 'setup-sauron)
 (require 'setup-mu4e)
 (require 'setup-log)

@@ -82,3 +82,6 @@
 [submodule "3rd/projectile"]
 	path = 3rd/projectile
 	url = https://github.com/bbatsov/projectile.git
+[submodule "3rd/emacs-twiki-mode"]
+	path = 3rd/emacs-twiki-mode
+	url = https://github.com/christopherjwhite/emacs-twiki-mode.git
