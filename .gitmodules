@@ -85,3 +85,6 @@
 [submodule "3rd/emacs-twiki-mode"]
 	path = 3rd/emacs-twiki-mode
 	url = https://github.com/christopherjwhite/emacs-twiki-mode.git
+[submodule "3rd/vlfi"]
+	path = 3rd/vlfi
+	url = https://github.com/m00natic/vlfi.git

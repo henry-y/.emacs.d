@@ -3,6 +3,13 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
+(blink-cursor-mode 0)
+
+(setq uniquify-min-dir-content 7)
+(setq frame-title-format '("%b"))
+
+(require 'vlf-setup)
+
 (setq scroll-step 1
       scroll-margin 3
       scroll-conservatively 10000

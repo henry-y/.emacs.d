@@ -20,8 +20,7 @@
 	 :section-numbers nil
 	 :html-extension "html"
 	 :body-only t
-         :style-include-default nil
-         )
+     :style-include-default nil)
 
 	("org-jekyll-static"
 	 :base-directory "~/blog/"
@@ -32,6 +31,16 @@
 
 	("org-jekyll"
 	 :components ("org-jekyll-blogs" "org-jekyll-static"))
+
+    ("org-notes"
+     :base-directory "~/wshare/My_Doc/org/"
+     :base-extension "org"
+     :publishing-directory "~/wshare/My_Doc/public_html/"
+     :recursive t
+     :publishing-function org-html-publish-to-html
+     :headline-levels 6
+     :section-numbers nil
+     :html-extension "html")
 	))
 
 ;; Improve our blogging experience with Org. This code sets four functions with
