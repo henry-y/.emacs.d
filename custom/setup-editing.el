@@ -8,6 +8,8 @@
 (setq uniquify-min-dir-content 7)
 (setq frame-title-format '("%b"))
 
+(setq line-number-display-limit-width 2000000)
+
 (require 'vlf-setup)
 
 (setq scroll-step 1

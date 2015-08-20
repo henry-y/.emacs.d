@@ -88,3 +88,6 @@
 [submodule "3rd/vlfi"]
 	path = 3rd/vlfi
 	url = https://github.com/m00natic/vlfi.git
+[submodule "3rd/Emacs-wgrep"]
+	path = 3rd/Emacs-wgrep
+	url = https://github.com/mhayashi1120/Emacs-wgrep.git
