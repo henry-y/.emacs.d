@@ -582,7 +582,7 @@ first line of the declaration."
   :group 'log4j-mode)
 
 (defvar log4j-log-fatal-regex
-  (concat log4j-loglevel-prefix "\\(FATAL\\)"))
+  (concat log4j-loglevel-prefix "\\(FATAL\\|crit\\)"))
 
 (defvar log4j-log-error-regex
   (concat log4j-loglevel-prefix "\\(ERROR\\|err\\|SEVERE\\)"))
@@ -599,7 +599,7 @@ first line of the declaration."
 (defun log4j-match-record-fatal (bound)
   "Search forward from point to BOUND for FATAL log record."
   (log4j-record-search-forward log4j-log-fatal-regex bound))
-  ;; (log4j-record-search-forward "\\<\\(FATAL\\)\\>" bound))
+  ;; (log4j-record-search-forward "\\<\\(FATAL\\|crit\\)\\>" bound))
 
 (defun log4j-match-record-error (bound)
   "Search forward from point to BOUND for ERROR log record."
