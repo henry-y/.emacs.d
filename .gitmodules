@@ -91,6 +91,6 @@
 [submodule "3rd/Emacs-wgrep"]
 	path = 3rd/Emacs-wgrep
 	url = https://github.com/mhayashi1120/Emacs-wgrep.git
-[submodule "3rd/multi-web-mode"]
-	path = 3rd/multi-web-mode
-	url = https://github.com/fgallina/multi-web-mode.git
+[submodule "3rd/web-mode"]
+	path = 3rd/web-mode
+	url = https://github.com/fxbois/web-mode.git

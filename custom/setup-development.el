@@ -12,6 +12,7 @@
   (linum-mode t)
   (highlight-numbers-mode t)
   (highlight-parentheses-mode t)
+  (setq web-mode-html-offset 2) ;;fix web-mode
   (highlight-indentation-mode t)
   (setq tab-width 4)
   (defvaralias 'c-basic-offset 'tab-width)
@@ -154,14 +155,30 @@
   (hs-minor-mode))
 (add-hook 'nxml-mode-hook 'my-nxml-mode-hook)
 
-(require 'multi-web-mode)
-(setq mweb-default-major-mode 'html-mode)
-(setq mweb-tags 
-	  '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
-		(js-mode  "<script[^>]*>" "</script>")
-		(css-mode "<style[^>]*>" "</style>")))
-(setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
-(multi-web-global-mode 1)
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
+
+(defun my-web-mode-indent (n)
+  (setq web-mode-markup-indent-offset n)
+  (setq web-mode-css-indent-offset n)
+  (setq web-mode-code-indent-offset n))
+
+(defun my-web-mode-hook ()
+  "Hooks for Web mode."
+  (my-web-mode-indent 2)
+  ;; (define-key web-mode-map (kbd "C-n") 'web-mode-tag-match)
+  (setq web-mode-enable-current-element-highlight t)
+  (setq web-mode-enable-current-column-highlight t))
+(add-hook 'web-mode-hook 'my-web-mode-hook)
 
 (require 'projectile)
 (projectile-global-mode)

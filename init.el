@@ -76,6 +76,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(bmkp-local-file-without-region ((t (:foreground "color-46"))))
+ '(web-mode-current-column-highlight-face ((t (:background "#cfead6"))))
+ '(web-mode-current-element-highlight-face ((t (:background "#cfead6"))))
+ '(web-mode-html-attr-name-face ((t (:foreground "#ba722a"))))
+ '(web-mode-html-tag-bracket-face ((t (:foreground "#4477c9"))))
+ '(web-mode-html-tag-face ((t (:foreground "#4477c9"))))
  '(which-func ((t (:foreground "brightred" :weight bold)))))
 
 ;; (setq debug-on-error t)
