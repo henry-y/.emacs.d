@@ -176,8 +176,8 @@
   "Hooks for Web mode."
   (my-web-mode-indent 2)
   ;; (define-key web-mode-map (kbd "C-n") 'web-mode-tag-match)
-  (setq web-mode-enable-current-element-highlight t)
-  (setq web-mode-enable-current-column-highlight t))
+  (setq web-mode-enable-current-element-highlight t))
+  ;; (setq web-mode-enable-current-column-highlight t))
 (add-hook 'web-mode-hook 'my-web-mode-hook)
 
 (require 'projectile)
