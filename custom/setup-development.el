@@ -35,6 +35,7 @@
 ;;   '(progn
 ;;      (define-key company-active-map (kbd "TAB") 'company-select-next)
 ;;      (define-key company-active-map [tab] #'company-select-next)))
+(setq company-dabbrev-downcase nil)
 
 (defun company-complete-common-or-cycle ()
   (interactive)
