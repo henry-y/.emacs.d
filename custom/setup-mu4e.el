@@ -13,9 +13,9 @@
 
 (setq mu4e-maildir-shortcuts
       '( ("/INBOX"           . ?i)
-	 ("/Sent"            . ?s)
+		 ("/Sent"            . ?s)
          ("/Drafts"          . ?d)
-	 ("/Trash"           . ?t)))
+		 ("/Trash"           . ?t)))
 
 (setq mu4e-get-mail-command "offlineimap -q"
       mu4e-update-interval 60
@@ -25,9 +25,9 @@
 (setq mu4e-headers-visible-columns 110)
 (setq mu4e-headers-fields
       '((:date    .   12)
-	(:flags   .    5)
-	(:from    .   20)
-	(:subject .  nil)))
+		(:flags   .    5)
+		(:from    .   20)
+		(:subject .  nil)))
 (setq mu4e-view-scroll-to-next nil)
 (setq mu4e-view-show-images t)
 (when (fboundp 'imagemagick-register-types)
@@ -46,9 +46,9 @@
           (defun my-do-compose-stuff ()
             "My settings for message composition."
             (flyspell-mode)
-	    ;; this override the org config, fix TODO
-	    (set 'org-html-table-header-tags '("<th scope=\"%s\"%s style=\"text-align:left\">" . "</th>"))
-	    (set 'org-html-table-default-attributes '(:border "1" :cellpadding "6" :cellspacing "0" :style "border-collapse:collapse;text-align:left"))))
+			;; this override the org config, fix TODO
+			(set 'org-html-table-header-tags '("<th scope=\"%s\"%s style=\"text-align:left\">" . "</th>"))
+			(set 'org-html-table-default-attributes '(:border "1" :cellpadding "6" :cellspacing "0" :style "border-collapse:collapse;text-align:left"))))
 
 ;; experimental???
 ;; org~mu4e-mime-switch-headers-or-body then C-c C-c at header
