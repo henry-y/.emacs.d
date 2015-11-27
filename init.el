@@ -85,4 +85,5 @@
 
 ;; (setq debug-on-error t)
 
-(add-to-list 'default-frame-alist '(font . "Monaco-10"))
+;; use pro font http://tobiasjung.name/profont/
+(add-to-list 'default-frame-alist '(font . "LMMonoProp10"))

@@ -10,4 +10,13 @@
 (setq org-src-fontify-natively t)
 (setq org-fontify-whole-heading-line t)
 
+
+(setq org-emphasis-alist
+	 (quote (("*" (:foreground "red"))
+			 ("/" italic)
+			 ("_" underline)
+			 ("=" org-verbatim verbatim)
+			 ("~" org-code verbatim)
+			 ("+" (:strike-through t)))))
+
 (provide 'setup-org)
