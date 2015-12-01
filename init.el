@@ -85,5 +85,5 @@
 
 ;; (setq debug-on-error t)
 
-;; use pro font http://tobiasjung.name/profont/
-(add-to-list 'default-frame-alist '(font . "LMMonoProp10"))
+;; use anonymous pro font http://www.marksimonson.com/fonts/view/anonymous-pro
+(add-to-list 'default-frame-alist '(font . "Anonymous Pro"))

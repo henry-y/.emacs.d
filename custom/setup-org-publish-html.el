@@ -73,7 +73,7 @@
 (defvar jekyll-post-ext ".org"
   "File extension of Jekyll posts.")
 (defvar jekyll-post-template
-  "#+STARTUP: showall\n#+STARTUP: hidestars\n#+OPTIONS: H:2 num:nil tags:nil toc:0 ^:nil timestamps:t\n#+BEGIN_HTML\n---\nlayout: post\ntitle: %s\nexcerpt: \ndate: \ncategories:\ntags:\npublished: true\n---\n#+END_HTML\n#+TOC: headlines 2\n\n"
+  "#+STARTUP: showall\n#+STARTUP: hidestars\n#+OPTIONS: H:2 num:nil tags:nil toc:0 ^:nil timestamps:t\n#+BEGIN_HTML\n---\nlayout: post\ntitle: %s\nexcerpt: \ndate: \ncategories:\ntags:\npublished: true\n---\n{%% excerpt %%}\n  <p></p>\n{%% endexcerpt %%}\n#+END_HTML\n#+TOC: headlines 2\n\n"
   "Default template for Jekyll posts. %s will be replace by the post title.")
 
 (defun jekyll-update-date ()
