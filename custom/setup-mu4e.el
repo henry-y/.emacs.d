@@ -4,7 +4,7 @@
 (add-to-list 'load-path mu4e-dir)
 (require 'mu4e)
 
-(setq mu4e-maildir "~/mail"
+(setq mu4e-maildir "/mnt/hgfs/wshare/offlineMail"
       mu4e-drafts-folder "/Drafts"
       mu4e-sent-folder "/Sent"
       mu4e-trash-folder "/Trash")
@@ -22,9 +22,9 @@
       mu4e-headers-auto-update t)
 
 (setq mu4e-split-view 'vertical)
-(setq mu4e-headers-visible-columns 110)
+(setq mu4e-headers-visible-columns 90)
 (setq mu4e-headers-fields
-      '((:date    .   12)
+      '((:date    .   15)
 		(:flags   .    5)
 		(:from    .   20)
 		(:subject .  nil)))

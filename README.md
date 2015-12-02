@@ -8,7 +8,7 @@ Recent Emacs is needed, at least Emacs-24.4. Installation steps of Emacs 24.4 ca
 
 Install the required packages:
 
-* `apt-get install python-pip`
+* `apt-get install python-pip python-dev autoconf`
 * `pip install rope`
 * `pip install jedi`
 * `pip install flake8`
