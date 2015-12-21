@@ -94,3 +94,6 @@
 [submodule "3rd/web-mode"]
 	path = 3rd/web-mode
 	url = https://github.com/fxbois/web-mode.git
+[submodule "3rd/puml-mode"]
+	path = 3rd/puml-mode
+	url = https://github.com/skuro/puml-mode.git

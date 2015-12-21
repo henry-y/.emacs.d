@@ -186,4 +186,9 @@
 (require 'helm-projectile)
 (helm-projectile-on)
 
+(require 'puml-mode)
+(add-to-list 'auto-mode-alist
+			 '("\\.puml\\'" . puml-mode)
+			 '("\\.plantuml\\'" . puml-mode))
+
 (provide 'setup-development)
