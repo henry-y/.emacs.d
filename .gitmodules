@@ -97,3 +97,6 @@
 [submodule "3rd/puml-mode"]
 	path = 3rd/puml-mode
 	url = https://github.com/skuro/puml-mode.git
+[submodule "3rd/beacon"]
+	path = 3rd/beacon
+	url = https://github.com/Malabarba/beacon.git

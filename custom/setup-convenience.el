@@ -144,4 +144,7 @@
 (require 'ztree)
 (require 'wgrep)
 
+(require 'beacon)
+(beacon-mode 1)
+
 (provide 'setup-convenience)
