@@ -1,5 +1,13 @@
 (require 'ox-publish)
 
+(require 'ox-jekyll-subtree)
+(autoload 'endless/export-to-blog "jekyll-once")
+(setq org-jekyll-use-src-plugin t)
+(setq endless/blog-base-url "http://henry-y.github.io/")
+(setq endless/blog-dir (expand-file-name "~/blog/_posts/"))
+
+(setq org-jekyll-include-yaml-front-matter nil)
+
 (setq org-html-head "")
 (setq org-html-table-default-attributes '(:class "table table-bordered table-hover table-condensed"))
 (setq org-export-with-toc nil)

@@ -100,3 +100,12 @@
 [submodule "3rd/beacon"]
 	path = 3rd/beacon
 	url = https://github.com/Malabarba/beacon.git
+[submodule "3rd/org-octopress"]
+	path = 3rd/org-octopress
+	url = https://github.com/yoshinari-nomura/org-octopress.git
+[submodule "3rd/ox-jekyll-subtree"]
+	path = 3rd/ox-jekyll-subtree
+	url = https://github.com/Malabarba/ox-jekyll-subtree.git
+[submodule "3rd/emacs-color-theme-solarized"]
+	path = 3rd/emacs-color-theme-solarized
+	url = https://github.com/sellout/emacs-color-theme-solarized.git

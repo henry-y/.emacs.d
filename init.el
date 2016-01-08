@@ -87,3 +87,7 @@
 
 ;; use anonymous pro font http://www.marksimonson.com/fonts/view/anonymous-pro
 (add-to-list 'default-frame-alist '(font . "Anonymous Pro"))
+
+;; (add-to-list 'custom-theme-load-path
+;; 			 (expand-file-name "3rd/emacs-color-theme-solarized" user-emacs-directory))
+;; (load-theme 'solarized t)
