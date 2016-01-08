@@ -109,3 +109,6 @@
 [submodule "3rd/emacs-color-theme-solarized"]
 	path = 3rd/emacs-color-theme-solarized
 	url = https://github.com/sellout/emacs-color-theme-solarized.git
+[submodule "3rd/org-reveal"]
+	path = 3rd/org-reveal
+	url = https://github.com/yjwen/org-reveal.git

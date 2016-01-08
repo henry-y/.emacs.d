@@ -19,4 +19,6 @@
 			 ("~" org-code verbatim)
 			 ("+" (:strike-through t)))))
 
+(require 'ox-reveal)
+
 (provide 'setup-org)
