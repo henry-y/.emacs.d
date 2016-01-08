@@ -143,6 +143,9 @@
 (require 'nameses)
 (require 'ztree)
 (require 'wgrep)
+(require 'help+)
+(require 'help-fns+)
+(require 'help-mode+)
 
 (require 'beacon)
 (beacon-mode 1)
