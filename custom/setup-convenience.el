@@ -157,4 +157,8 @@
 (global-set-key (kbd "C-x SPC") 'avy-pop-mark)
 (global-set-key (kbd "M-g f") 'avy-goto-line)
 
+(require 'ace-window)
+(global-set-key (kbd "M-p") 'ace-window)
+(setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+
 (provide 'setup-convenience)

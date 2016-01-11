@@ -124,3 +124,6 @@
 [submodule "3rd/avy"]
 	path = 3rd/avy
 	url = https://github.com/abo-abo/avy.git
+[submodule "3rd/ace-window"]
+	path = 3rd/ace-window
+	url = https://github.com/abo-abo/ace-window.git
