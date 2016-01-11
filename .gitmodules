@@ -115,3 +115,6 @@
 [submodule "3rd/pdf-tools"]
 	path = 3rd/pdf-tools
 	url = https://github.com/politza/pdf-tools.git
+[submodule "3rd/elisp-slime-nav"]
+	path = 3rd/elisp-slime-nav
+	url = https://github.com/purcell/elisp-slime-nav.git
