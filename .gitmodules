@@ -121,3 +121,6 @@
 [submodule "3rd/ace-jump-mode"]
 	path = 3rd/ace-jump-mode
 	url = https://github.com/winterTTr/ace-jump-mode.git
+[submodule "3rd/avy"]
+	path = 3rd/avy
+	url = https://github.com/abo-abo/avy.git
