@@ -146,6 +146,8 @@
 (require 'help+)
 (require 'help-fns+)
 (require 'help-mode+)
+(pdf-tools-install)
+(setq pdf-view-continuous nil)
 
 (require 'beacon)
 (beacon-mode 1)

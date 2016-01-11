@@ -112,3 +112,6 @@
 [submodule "3rd/org-reveal"]
 	path = 3rd/org-reveal
 	url = https://github.com/yjwen/org-reveal.git
+[submodule "3rd/pdf-tools"]
+	path = 3rd/pdf-tools
+	url = https://github.com/politza/pdf-tools.git
