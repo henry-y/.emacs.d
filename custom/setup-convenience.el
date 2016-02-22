@@ -39,7 +39,10 @@
 
 (eval-after-load 'info
   '(progn (info-initialize)
-	  (add-to-list 'Info-directory-list "~/.emacs.d/3rd/magit/")))
+		  (add-to-list 'Info-directory-list "~/.emacs.d/3rd/magit/")))
+(setq magit-lisp-dir
+      (expand-file-name "3rd/magit/lisp" user-emacs-directory))
+(add-to-list 'load-path magit-lisp-dir)
 (require 'magit)
 
 (global-set-key (kbd "<f5>") 'magit-status)
