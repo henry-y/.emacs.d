@@ -16,8 +16,8 @@
   '(
     ;; ("\\<\\(#?include\\|define\\|undef\\|ifdef\\|elseifdef\\)\\>[ \t]*\\(.*\\)"
     ;;  (1 font-lock-preprocessor-face) (2 font-lock-constant-face nil t))
-        ;;("\\`\\s-*\\(call\\)\\s-+\\(\\S-*\\)"
-        ("\\<\\(call\\)\\>[ \t]+\\(.*\\)"
+	;;("\\`\\s-*\\(call\\)\\s-+\\(\\S-*\\)"
+	("\\<\\(call\\)\\>[ \t]+\\(.*\\)"
      (1 font-lock-keyword-face) (2 font-lock-function-name-face nil t)))
   "Subdued level highlighting for DCPL mode.")
 
@@ -28,38 +28,38 @@
      ;; Preprocessor
      ,(concat "\\<"
               (regexp-opt '("define" "#define" "undef" "#undef" "ifdef"
-			    "#ifdef" "elseifdef" "ifndef" "#ifndef"
-			    "endifdef" "#else" "#endif" "__LINE__"
-			    "__FILE__" "include" "#include") t)
+							"#ifdef" "elseifdef" "ifndef" "#ifndef"
+							"endifdef" "#else" "#endif" "__LINE__"
+							"__FILE__" "include" "#include") t)
               "\\>")
      ;; Integer Expressions
      ,(concat "\\<"
-   	      (regexp-opt '("or" "and" "bitor" "bitxor" "bitand" "left"
-   			    "right" "div" "mod" "not" "bitnot") t)
-   	      "\\>")
+			  (regexp-opt '("or" "and" "bitor" "bitxor" "bitand" "left"
+							"right" "div" "mod" "not" "bitnot") t)
+			  "\\>")
      ;; String Expressions
      ,(concat "\\<"
-   	      (regexp-opt '("nullif" "nullthen") t)
-   	      "\\>")
+			  (regexp-opt '("nullif" "nullthen") t)
+			  "\\>")
      ;; Statements
      ,(concat "\\<"
-   	     (regexp-opt '("encode" "locate" "parse" "pattern" "break"
-   			   "call" "continue" "exp" "switch" "endswitch"
-   			   "case" "endcase" "other" "exit" "for" "endfor"
-   			   "if" "else" "endif" "pause" "return" "wait"
-   			   "while" "endwhile" "comment" "prompt" "add"
-   			   "display" "protocol" "log" "badfcs" "codec"
-   			   "on" "off" "forward" "to" "stop" "free"
-   			   "gwrite" "append" "timestamp" "keyboard"
-   			   "load" "noglobals" "logpolicy" "logsize"
-   			   "totalsize" "preprocess" "print" "received"
-   			   "remove" "send" "screen" "clear" "sprint"
-   			   "store" "sysmon" "timeslot" "unload" "view"
-   			   "write" "wsprint" "start_itimer" "stop_itimer"
-   			   "tag" "index" "units" "phase" "read_itimer"
-   			   "ajust_itimer" "array" "default" "context"
-   			   "main" "portspec" "variant" "variable") t)
-   	     "\\>")
+			  (regexp-opt '("encode" "locate" "parse" "pattern" "break"
+							"call" "continue" "exp" "switch" "endswitch"
+							"case" "endcase" "other" "exit" "for" "endfor"
+							"if" "else" "endif" "pause" "return" "wait"
+							"while" "endwhile" "comment" "prompt" "add"
+							"display" "protocol" "log" "badfcs" "codec"
+							"on" "off" "forward" "to" "stop" "free"
+							"gwrite" "append" "timestamp" "keyboard"
+							"load" "noglobals" "logpolicy" "logsize"
+							"totalsize" "preprocess" "print" "received"
+							"remove" "send" "screen" "clear" "sprint"
+							"store" "sysmon" "timeslot" "unload" "view"
+							"write" "wsprint" "start_itimer" "stop_itimer"
+							"tag" "index" "units" "phase" "read_itimer"
+							"ajust_itimer" "array" "default" "context"
+							"main" "portspec" "variant" "variable") t)
+			  "\\>")
      ("\\(\\w+\\)\\s-*\(" 1 font-lock-function-call-face)
      ("[&%@]\\(\\w+\\)" 1 font-lock-variable-name-face)
      ;; highlight-numbers minor mode override this, fix to do
@@ -89,10 +89,10 @@
   (if (bobp)
       (indent-line-to 0)
     (let ((not-indented t)
-		  (current-end-regex "^[ \t]*\\(endif\\|else\\|endcase\\|endswitch\\|endwhile\\|endfor\\)")
-		  (previous-end-regex "^[ \t]*\\(endif\\|endcase\\|endswitch\\|endwhile\\|endfor\\)")
+		  (current-end-regex "^[ \t]*\\(endif\\|else\\|endcase\\|endswitch\\|endwhile\\|endfor\\)\\s-*$")
+		  (previous-end-regex "^[ \t]*\\(endif\\|endcase\\|endswitch\\|endwhile\\|endfor\\)\\s-*$")
 		  (begin-regex "^[ \t]*\\(if\\|else\\|case\\|\\(exp \\)?switch\\|while\\|for\\).*")
-		  (special-case-regex ".*\\s-+case\\s-+.*")
+		  (special-case-regex "\\s-*{.*}\\s-*case\\s-+.*")
 		  cur-indent)
       (if (looking-at current-end-regex) ; current line is end block
           (progn
@@ -138,21 +138,21 @@
   (interactive)
   (let ((line (dcpl-current-line-contents)))
     (if (string-match dcpl--include-regexp line)
-	(let ((helm-gtags-use-input-at-cursor t))
-	  (helm-gtags-find-files (concat "/" (match-string-no-properties 1 line))))
+		(let ((helm-gtags-use-input-at-cursor t))
+		  (helm-gtags-find-files (concat "/" (match-string-no-properties 1 line))))
       (if (string-match dcpl--call-regexp line)
-	  (let ((helm-gtags-use-input-at-cursor t))
-	    (helm-gtags-find-files (concat "/" (match-string-no-properties 1 line) "\\.d" )))
-	(helm-gtags-find-tag-from-here)
-	;;(call-interactively 'helm-gtags-find-tag)
-	))))
+		  (let ((helm-gtags-use-input-at-cursor t))
+			(helm-gtags-find-files (concat "/" (match-string-no-properties 1 line) "\\.d" )))
+		(helm-gtags-find-tag-from-here)
+		;;(call-interactively 'helm-gtags-find-tag)
+		))))
 
 (defun dcpl-find-references ()
   "Find symbol references."
   (interactive)
   (let ((line (dcpl-current-line-contents)))
     (if (thing-at-point 'symbol)
-	(helm-gtags-find-tag-from-here)
+		(helm-gtags-find-tag-from-here)
       (call-interactively 'helm-gtags-find-tag))))
 
 (defun dcpl-previous-location ()
@@ -183,7 +183,7 @@
 
 (defvar dcpl-mode-syntax-table
   ;; (let ((dcpl-mode-syntax-table (make-syntax-table (standard-syntax-table))))
-	(let ((dcpl-mode-syntax-table (make-syntax-table)))
+  (let ((dcpl-mode-syntax-table (make-syntax-table)))
     (modify-syntax-entry ?& "/" dcpl-mode-syntax-table)
     (modify-syntax-entry ?% "/" dcpl-mode-syntax-table)
     (modify-syntax-entry ?= "." dcpl-mode-syntax-table)
@@ -197,10 +197,14 @@
   "Syntax table for dcpl-mode")
 
 (define-derived-mode dcpl-mode prog-mode
-;; (defun dcpl-mode ()
+  ;; (defun dcpl-mode ()
   "Major mode for editing Digital Communications Programming Language (DCPL)"
   (interactive)
   ;; (kill-all-local-variables)
+  (setq comment-start "/* ")
+  (setq comment-start-skip "\\(//+\\|/\\*+\\)\\s *")
+  (setq comment-end " */")
+  (setq comment-multi-line t)
   (setq case-fold-search nil)
   (use-local-map dcpl-mode-map)
   (set-syntax-table dcpl-mode-syntax-table)
