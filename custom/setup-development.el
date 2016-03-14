@@ -125,18 +125,35 @@
     (select-window win0)
     ))
 
-(setq rtags-src-dir
-      (expand-file-name "3rd/rtags/src" user-emacs-directory))
-(add-to-list 'load-path rtags-src-dir)
-(require 'rtags)
+;; (setq rtags-src-dir
+;;       (expand-file-name "3rd/rtags/src" user-emacs-directory))
+;; (add-to-list 'load-path rtags-src-dir)
+;; (require 'rtags)
 
-(define-key c-mode-base-map (kbd "M-.") 'rtags-find-symbol-at-point)
-(define-key c-mode-base-map (kbd "M-]") 'rtags-find-references-at-point)
-(define-key c-mode-base-map (kbd "M-*") 'rtags-location-stack-back)
-(define-key c-mode-base-map (kbd "M-(") 'rtags-location-stack-forward)
-(define-key c-mode-base-map (kbd "<M-up>") 'rtags-previous-match)
-(define-key c-mode-base-map (kbd "<M-down>") 'rtags-next-match)
-(define-key c-mode-base-map (kbd "C-c h i") 'rtags-imenu)
+;; (define-key c-mode-base-map (kbd "M-.") 'rtags-find-symbol-at-point)
+;; (define-key c-mode-base-map (kbd "M-]") 'rtags-find-references-at-point)
+;; (define-key c-mode-base-map (kbd "M-*") 'rtags-location-stack-back)
+;; (define-key c-mode-base-map (kbd "M-(") 'rtags-location-stack-forward)
+;; (define-key c-mode-base-map (kbd "<M-up>") 'rtags-previous-match)
+;; (define-key c-mode-base-map (kbd "<M-down>") 'rtags-next-match)
+;; (define-key c-mode-base-map (kbd "C-c h i") 'rtags-imenu)
+
+(add-hook 'c-mode-hook 'helm-gtags-mode)
+(add-hook 'c++-mode-hook 'helm-gtags-mode)
+(add-hook 'asm-mode-hook 'helm-gtags-mode)
+
+(custom-set-variables
+ '(helm-gtags-path-style 'relative)
+ '(helm-gtags-ignore-case t)
+ '(helm-gtags-auto-update t))
+
+(eval-after-load "helm-gtags"
+  '(progn
+     (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
+     (define-key helm-gtags-mode-map (kbd "M-]") 'helm-gtags-find-rtag)
+     (define-key helm-gtags-mode-map (kbd "M-*") 'helm-gtags-previous-history)
+     (define-key helm-gtags-mode-map (kbd "M-(") 'helm-gtags-next-history)
+     (define-key helm-gtags-mode-map (kbd "C-c h i") 'helm-gtags-parse-file)))
 
 (require 'hideshow)
 (require 'sgml-mode)
