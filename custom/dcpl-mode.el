@@ -213,6 +213,7 @@
   ;; (set 'indent-line-function 'dcpl-indent-line)
   (setq major-mode 'dcpl-mode)
   (setq mode-name "DCPL")
+  (setq-default indent-tabs-mode nil)
   (run-hooks 'dcpl-mode-hook))
 
 (provide 'dcpl-mode)
